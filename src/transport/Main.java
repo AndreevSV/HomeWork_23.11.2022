@@ -47,9 +47,9 @@ public class Main {
         DriverD<Bus> driverC = new DriverD<>("Aslan", true, 3);
 
         System.out.println();
-        driverA.showText(car1);
-        driverB.showText(truck3);
-        driverC.showText(bus2);
+        System.out.println(driverA.showText(car1));
+        System.out.println(driverB.showText(truck3));
+        System.out.println(driverC.showText(bus2));
 
 
     }
