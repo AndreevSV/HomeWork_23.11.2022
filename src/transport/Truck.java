@@ -2,18 +2,11 @@ package transport;
 
 import java.util.Arrays;
 
-public class Car extends Transport implements Competitor {
+public class Truck extends Transport implements Competitor {
 
     public int pitStop;
     public int maxSpeed;
     public int bestTime;
-
-    public Car(String brand, String model, double engineVolume, int pitStop, int maxSpeed, int bestTime) {
-        super(brand, model, engineVolume);
-        this.pitStop = pitStop;
-        this.maxSpeed = maxSpeed;
-        this.bestTime = bestTime;
-    }
 
     public int getPitStop() {
         return pitStop;
@@ -25,6 +18,13 @@ public class Car extends Transport implements Competitor {
 
     public int getBestTime() {
         return bestTime;
+    }
+
+    public Truck(String brand, String model, double engineVolume, int pitStop, int maxSpeed, int bestTime) {
+        super(brand, model, engineVolume);
+        this.pitStop = pitStop;
+        this.maxSpeed = maxSpeed;
+        this.bestTime = bestTime;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Car extends Transport implements Competitor {
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "Truck{" +
                 "brand='" + getBrand() + '\'' +
                 ", model='" + getModel() + '\'' +
                 ", engineVolume=" + getEngineVolume() +
