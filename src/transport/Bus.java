@@ -7,7 +7,6 @@ public class Bus extends Transport implements Competitor {
     public int pitStop;
     public int maxSpeed;
     public int bestTime;
-//    Bus[] buses;
 
     public Bus(String brand, String model, double engineVolume, int pitStop, int maxSpeed, int bestTime) {
         super(brand, model, engineVolume);
@@ -54,22 +53,4 @@ public class Bus extends Transport implements Competitor {
                 ", bestTime=" + getBestTime() +
                 '}';
     }
-
-//    @Override
-//    public int searchForBestTime(Transport[] transports) {
-//        return 0;
-//    }
-
-//    @Override
-//    public void searchForBestTime(Bus[] buses) {
-//        int bestTime = buses[0].getBestTime();
-//        int a = 0;
-//        for (int i = 0; i < buses.length; i++) {
-//            if (buses[i].getBestTime() < bestTime) {
-//                bestTime = buses[i].getBestTime();
-//                a = i;
-//               }
-//            System.out.println("Лучшее время" + buses[i].getBestTime() + "у автобуса " + buses[i].getBrand() + " " + buses[i].getModel() + " с двигателем " + buses[i].getEngineVolume() + " л");
-//        }
-//        }
 }

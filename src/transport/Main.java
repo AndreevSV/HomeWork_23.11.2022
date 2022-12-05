@@ -1,5 +1,7 @@
 package transport;
 
+import static transport.Transport.searchForBestTime;
+
 public class Main {
     public static void main(String[] args)  {
 
@@ -38,9 +40,12 @@ public class Main {
         car2.maxSpeed();
 
         System.out.println();
-        searchForBestTime(buses);
-        searchForBestTime(cars);
-        searchForBestTime(trucks);
+
+        System.out.println(searchForBestTime(transports));
+        System.out.println(searchForBestTime(cars));
+        System.out.println(searchForBestTime(buses));
+        System.out.println(searchForBestTime(trucks));
+
 
         DriverB<Car> driverA = new DriverB<>("Artem", true, 10);
         DriverC<Truck> driverB = new DriverC<>("Maxim", true, 15);
@@ -50,8 +55,6 @@ public class Main {
         System.out.println(driverA.showText(car1));
         System.out.println(driverB.showText(truck3));
         System.out.println(driverC.showText(bus2));
-
-
     }
 
     public static void printTransport(Transport[] transport) {
@@ -59,53 +62,4 @@ public class Main {
             System.out.println(transports);
         }
     }
-
-    public static void searchForBestTime(Bus[] buses) {
-        int bestTime = buses[0].getBestTime();
-        int a = 0;
-        for (int i = 0; i < buses.length; i++) {
-            if (buses[i].getBestTime() < bestTime) {
-                bestTime = buses[i].getBestTime();
-                a = i;
-            }
-        }
-        System.out.println("Лучшее время " + buses[a].getBestTime() + " минут у автобуса " + buses[a].getBrand() + " " + buses[a].getModel() + " с двигателем " + buses[a].getEngineVolume() + "л");
-    }
-
-    public static void searchForBestTime(Car[] cars) {
-        int bestTime = cars[0].getBestTime();
-        int a = 0;
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i].getBestTime() < bestTime) {
-                bestTime = cars[i].getBestTime();
-                a = i;
-            }
-        }
-        System.out.println("Лучшее время " + cars[a].getBestTime() + " минут у автомобиля " + cars[a].getBrand() + " " + cars[a].getModel() + " с двигателем " + cars[a].getEngineVolume() + "л");
-    }
-
-    public static void searchForBestTime(Truck[] trucks) {
-        int bestTime = trucks[0].getBestTime();
-        int a = 0;
-        for (int i = 0; i < trucks.length; i++) {
-            if (trucks[i].getBestTime() < bestTime) {
-                bestTime = trucks[i].getBestTime();
-                a = i;
-            }
-        }
-        System.out.println("Лучшее время " + trucks[a].getBestTime() + " минут у грузовика " + trucks[a].getBrand() + " " + trucks[a].getModel() + " с двигателем " + trucks[a].getEngineVolume() + "л");
-    }
-
-//    public static void searchForBestTime(Transport[]<T> transport) {
-//        int bestTime = transport[0].getBestTime();
-//        int a = 0;
-//        for (int i = 0; i < transport.length; i++) {
-//            if (transport[i].getBestTime() < bestTime) {
-//                bestTime = transport[i].getBestTime();
-//                a = i;
-//            }
-//        }
-//        System.out.println("Лучшее время " + transport[a].getBestTime() + " минут у грузовика " + transport[a].getBrand() + " " + transport[a].getModel() + " с двигателем " + transport[a].getEngineVolume() + "л");
-//    }
-
 }

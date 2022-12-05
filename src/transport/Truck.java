@@ -8,6 +8,13 @@ public class Truck extends Transport implements Competitor {
     public int maxSpeed;
     public int bestTime;
 
+    public Truck(String brand, String model, double engineVolume, int pitStop, int maxSpeed, int bestTime) {
+        super(brand, model, engineVolume);
+        this.pitStop = pitStop;
+        this.maxSpeed = maxSpeed;
+        this.bestTime = bestTime;
+    }
+
     public int getPitStop() {
         return pitStop;
     }
@@ -18,13 +25,6 @@ public class Truck extends Transport implements Competitor {
 
     public int getBestTime() {
         return bestTime;
-    }
-
-    public Truck(String brand, String model, double engineVolume, int pitStop, int maxSpeed, int bestTime) {
-        super(brand, model, engineVolume);
-        this.pitStop = pitStop;
-        this.maxSpeed = maxSpeed;
-        this.bestTime = bestTime;
     }
 
     @Override

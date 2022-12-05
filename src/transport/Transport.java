@@ -1,18 +1,34 @@
 package transport;
 
-import java.util.Arrays;
-
-public abstract class Transport {
+public abstract class Transport implements Competitor {
     private String brand;
     private String model;
     private double engineVolume;
-
+    public int pitStop;
+    public int maxSpeed;
+    public int bestTime;
     public Transport[] transports;
 
     public Transport(String brand, String model, double engineVolume) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
+    }
+
+    public int getPitStop() {
+        return pitStop;
+    }
+
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public int getBestTime() {
+        return bestTime;
+    }
+
+    public Transport[] getTransports() {
+        return transports;
     }
 
     public String getBrand() {
@@ -59,7 +75,17 @@ public abstract class Transport {
         System.out.println("Закончить движение");
     }
 
-//    public abstract int searchForBestTime(Transport[] transports);
+    public static String searchForBestTime(Transport[] transports) {
+        int bestTime = transports[0].getBestTime();
+        int a = 0;
+        for (int i = 0; i < transports.length; i++) {
+            if (transports[i].getBestTime() < bestTime) {
+                bestTime = transports[i].getBestTime();
+                a = i;
+            }
+        }
+        return "Лучшее время " + transports[a].getBestTime() + " минут у автомобиля " + transports[a].getBrand() + " " + transports[a].getModel() + " с двигателем " + transports[a].getEngineVolume() + "л";
+    }
 
 }
 

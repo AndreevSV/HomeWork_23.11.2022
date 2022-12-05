@@ -21,7 +21,4 @@ public class DriverB<T extends Car> extends Driver {
         System.out.println("Водитель" + getName() + "заправил автомобиль");
     }
 
-    public String showText(Transport transport) {
-       return "Водитель " + getName() + " управляет автомобилем " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде";
-    }
 }
