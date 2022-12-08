@@ -87,6 +87,9 @@ public abstract class Transport implements Competitor {
         return "Лучшее время " + transports[a].getBestTime() + " минут у автомобиля " + transports[a].getBrand() + " " + transports[a].getModel() + " с двигателем " + transports[a].getEngineVolume() + "л";
     }
 
+    public abstract void printType();
+
+
 }
 
 
