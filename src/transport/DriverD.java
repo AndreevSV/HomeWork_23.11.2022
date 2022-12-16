@@ -1,7 +1,7 @@
 package transport;
 
 public class DriverD<T extends Bus> extends Driver {
-    public DriverD(String name, boolean licence, int experience) {
+    public DriverD(String name, char licence, int experience) {
         super(name, licence, experience);
     }
 
