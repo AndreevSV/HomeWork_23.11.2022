@@ -2,18 +2,18 @@ package transport;
 
 public abstract class Driver <T extends Transport> {
     public String name;
-    public boolean licence;
+    public char licence;
     public int experience;
 
     public T transport;
 
-    public Driver(String name, boolean licence, int experience) {
+    public Driver(String name, char licence, int experience) {
         setName(name);
         setLicence(licence);
         setExperience(experience);
     }
 
-    public Driver(String name, boolean licence, int experience, T transport) {
+    public Driver(String name, char licence, int experience, T transport) {
         setName(name);
         setLicence(licence);
         setExperience(experience);
@@ -34,11 +34,11 @@ public abstract class Driver <T extends Transport> {
         this.name = name;
     }
 
-    public boolean isLicence() {
+    public char getLicence() {
         return licence;
     }
 
-    public void setLicence(boolean licence) {
+    public void setLicence(char licence) {
         this.licence = licence;
     }
 

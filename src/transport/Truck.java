@@ -34,8 +34,8 @@ public class Truck extends Transport implements Competitor {
     public int bestTime;
     public LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity, int pitStop, int maxSpeed, int bestTime) {
-        super(brand, model, engineVolume);
+    public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
+        super(brand, model, engineVolume, diagnostic);
         this.loadCapacity = loadCapacity;
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
@@ -97,5 +97,17 @@ public class Truck extends Transport implements Competitor {
                 ", maxSpeed=" + getMaxSpeed() +
                 ", bestTime=" + getBestTime() +
                 '}';
+    }
+
+    @Override
+    public boolean passDiagnostic() {
+        if (!isDiagnostic()) {
+            try {
+                throw new RuntimeException("Грузовик " + getBrand() + " " + getModel() + " НЕ ПРОШЕЛ диагностику");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        } else System.out.println("Грузовик " + getBrand() + " " + getModel() + " прошел диагностику");
+        return true;
     }
 }

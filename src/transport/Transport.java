@@ -9,10 +9,21 @@ public abstract class Transport implements Competitor {
     public int bestTime;
     public Transport[] transports;
 
-    public Transport(String brand, String model, double engineVolume) {
+    public boolean diagnostic;
+
+    public Transport(String brand, String model, double engineVolume, boolean diagnostic) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
+        setDiagnostic(diagnostic);
+    }
+
+    public boolean isDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(boolean diagnostic) {
+        this.diagnostic = diagnostic;
     }
 
     public int getPitStop() {
@@ -89,6 +100,7 @@ public abstract class Transport implements Competitor {
 
     public abstract void printType();
 
+    public abstract boolean passDiagnostic();
 
 }
 

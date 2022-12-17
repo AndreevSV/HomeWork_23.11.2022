@@ -2,7 +2,7 @@ package transport;
 
 public class Car extends Transport implements Competitor {
 
-    public enum CabinType{
+    public enum CabinType {
         SEDAN("Седан"),
         HATCHBACK("Хэтчбэк"),
         COUPE("Купе"),
@@ -14,6 +14,7 @@ public class Car extends Transport implements Competitor {
         MINIVAN("Минивен");
 
         final String cabinType;
+
         CabinType(String cabinType) {
             this.cabinType = cabinType;
         }
@@ -27,13 +28,14 @@ public class Car extends Transport implements Competitor {
             return "Тип кузова " + cabinType + ". \n";
         }
     }
+
     public int pitStop;
     public int maxSpeed;
     public int bestTime;
     public CabinType cabinType;
 
-    public Car(String brand, String model, double engineVolume, CabinType cabinType, int pitStop, int maxSpeed, int bestTime) {
-        super(brand, model, engineVolume);
+    public Car(String brand, String model, double engineVolume, CabinType cabinType, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
+        super(brand, model, engineVolume, diagnostic);
         this.cabinType = cabinType;
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
@@ -94,5 +96,17 @@ public class Car extends Transport implements Competitor {
                 ", maxSpeed=" + getMaxSpeed() +
                 ", bestTime=" + getBestTime() +
                 '}';
+    }
+
+    @Override
+    public boolean passDiagnostic() {
+        if (!isDiagnostic()) {
+            try {
+                throw new RuntimeException("Автомобиль " + getBrand() + " " + getModel() + " НЕ ПРОШЕЛ диагностику");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        } else System.out.println("Автомобиль " + getBrand() + " " + getModel() + " прошел диагностику");
+    return true;
     }
 }

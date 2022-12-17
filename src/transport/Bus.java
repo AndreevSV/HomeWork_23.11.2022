@@ -47,8 +47,8 @@ public class Bus extends Transport implements Competitor {
     public BusCapacity capacity;
 
 
-    public Bus(String brand, String model, double engineVolume, BusCapacity capacity, int pitStop, int maxSpeed, int bestTime) {
-        super(brand, model, engineVolume);
+    public Bus(String brand, String model, double engineVolume, BusCapacity capacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
+        super(brand, model, engineVolume, diagnostic);
         this.capacity = capacity;
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
@@ -100,6 +100,12 @@ public class Bus extends Transport implements Competitor {
     }
 
     @Override
+    public boolean passDiagnostic() {
+            System.out.println("Автобус " + getBrand() + " " + getModel() + " в диагностике не нуждается");
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Bus{" +
                 "brand='" + getBrand() + '\'' +
@@ -110,4 +116,5 @@ public class Bus extends Transport implements Competitor {
                 ", bestTime=" + getBestTime() +
                 '}';
     }
+
 }
