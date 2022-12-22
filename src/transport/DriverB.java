@@ -6,5 +6,4 @@ public class DriverB extends Driver<Car> {
         super(name, licence, experience, transport);
     }
 
-
 }

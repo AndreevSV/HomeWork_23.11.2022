@@ -12,43 +12,13 @@ public abstract class Transport {
     public int bestTime;
 //    public Transport[] transports;
     public boolean diagnostic;
-    public List<Sponsor<?>> sponsors = new ArrayList<>();
-    public List<Mechanic<?>> mechanics = new ArrayList<>();
-    public List<Driver<?>> drivers = new ArrayList<>(1);
 
     public Transport(String brand, String model, double engineVolume, boolean diagnostic) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
         setDiagnostic(diagnostic);
-
-
     }
-
-    public List<Sponsor<?>> getSponsors() {
-        return sponsors;
-    }
-
-    public void addSponsor(Sponsor<?> sponsor) {
-        this.sponsors.add(sponsor);
-    }
-
-    public List<Mechanic<?>> getMechanics() {
-        return mechanics;
-    }
-
-    public void addMechanic(Mechanic<?> mechanic) {
-        this.mechanics.add(mechanic);
-    }
-
-    public List<Driver<?>> getDrivers() {
-        return drivers;
-    }
-
-    public void addDriver(Driver<?> driver) {
-        this.drivers.add(driver);
-    }
-
 
     public boolean isDiagnostic() {
         return diagnostic;

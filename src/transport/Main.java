@@ -44,11 +44,18 @@ public class Main {
         DriverD driverD3 = new DriverD("Turan", 'D', 34, bus4);
 
         car1.addDriver(driverB);
-        car1.addMechanic(mechanic3);
+        car1.addMechanic(mechanic1);
         car1.addSponsor(sponsor1);
         printDriverSponsorsMechanics(car1);
         mechanic1.makeService(car1);
         mechanic1.passDiagnsostic(car1);
+
+        bus3.addDriver(driverD1);
+        bus3.addMechanic(mechanic3);
+        bus3.addSponsor(sponsor4);
+        printDriverSponsorsMechanics(bus3);
+        mechanic3.makeService(bus3);
+        mechanic3.passDiagnsostic(bus3);
 
 //        Transport[] transports = new Transport[] {car1, car2, car3, car4, bus1, bus2, bus3, bus4, truck1, truck2, truck3, truck4};
 //        Car[] cars = new Car[] {car1, car2, car3, car4};
@@ -119,7 +126,19 @@ public class Main {
         }
     }
 
-    public static void printDriverSponsorsMechanics (Transport transport) {
+    public static void printDriverSponsorsMechanics (Car transport) {
+        System.out.println("Транспортное средств " +  transport.getBrand()  + " " + transport.getModel() +
+                " управлется водителем " + transport.getDrivers() + " обслуживается следующими механиками " +
+                transport.getMechanics() + " и имеет следующих спонсоров " + transport.getSponsors());
+    }
+
+    public static void printDriverSponsorsMechanics (Bus transport) {
+        System.out.println("Транспортное средств " +  transport.getBrand()  + " " + transport.getModel() +
+                " управлется водителем " + transport.getDrivers() + " обслуживается следующими механиками " +
+                transport.getMechanics() + " и имеет следующих спонсоров " + transport.getSponsors());
+    }
+
+    public static void printDriverSponsorsMechanics (Truck transport) {
         System.out.println("Транспортное средств " +  transport.getBrand()  + " " + transport.getModel() +
                 " управлется водителем " + transport.getDrivers() + " обслуживается следующими механиками " +
                 transport.getMechanics() + " и имеет следующих спонсоров " + transport.getSponsors());

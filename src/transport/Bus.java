@@ -1,13 +1,11 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bus extends Transport implements Competitor {
 
-    public enum BusCapacity {
-        SUPER_LITTLE(10),
-        LITTLE(25),
-        MEDIUM(50),
-        LARGE(80),
-        SUPER_LARGE(120);
+    public enum BusCapacity {SUPER_LITTLE(10), LITTLE(25), MEDIUM(50), LARGE(80), SUPER_LARGE(120);
 
         final int busCapacity;
 
@@ -46,6 +44,9 @@ public class Bus extends Transport implements Competitor {
     public int bestTime;
     public BusCapacity capacity;
 
+    public List<Sponsor<Transport>> sponsors = new ArrayList<>();
+    public List<Mechanic<Bus>> mechanics = new ArrayList<>();
+    public List<DriverD> drivers = new ArrayList<>();
 
     public Bus(String brand, String model, double engineVolume, BusCapacity capacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
         super(brand, model, engineVolume, diagnostic);
@@ -53,6 +54,31 @@ public class Bus extends Transport implements Competitor {
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
         this.bestTime = bestTime;
+    }
+
+
+    public List<Sponsor<Transport>> getSponsors() {
+        return sponsors;
+    }
+
+    public void addSponsor(Sponsor<Transport> sponsor) {
+        this.sponsors.add(sponsor);
+    }
+
+    public List<Mechanic<Bus>> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic<Bus> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+
+    public List<DriverD> getDrivers() {
+        return drivers;
+    }
+
+    public void addDriver(DriverD driver) {
+        this.drivers.add(driver);
     }
 
     public BusCapacity getCapacity() {
