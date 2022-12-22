@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+
 public class Truck extends Transport implements Competitor {
 
     public enum LoadCapacity{
@@ -87,17 +89,7 @@ public class Truck extends Transport implements Competitor {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Truck{" +
-                "brand='" + getBrand() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", engineVolume=" + getEngineVolume() +
-                ", pitStop=" + getPitStop() +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", bestTime=" + getBestTime() +
-                '}';
-    }
+
 
     @Override
     public boolean passDiagnostic() {
@@ -109,5 +101,22 @@ public class Truck extends Transport implements Competitor {
             }
         } else System.out.println("Грузовик " + getBrand() + " " + getModel() + " прошел диагностику");
         return true;
+    }
+
+    @Override
+    public void repairTransport() {
+        System.out.println("Производится ремонт грузовика " + getBrand() + " " + getModel()  + " следующим механиком " + getMechanics());
+    }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "brand='" + getBrand() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", engineVolume=" + getEngineVolume() +
+                ", pitStop=" + getPitStop() +
+                ", maxSpeed=" + getMaxSpeed() +
+                ", bestTime=" + getBestTime() +
+                '}';
     }
 }

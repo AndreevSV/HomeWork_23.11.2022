@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+
 public class Car extends Transport implements Competitor {
 
     public enum CabinType {
@@ -87,18 +89,6 @@ public class Car extends Transport implements Competitor {
     }
 
     @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + getBrand() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", engineVolume=" + getEngineVolume() +
-                ", pitStop=" + getPitStop() +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", bestTime=" + getBestTime() +
-                '}';
-    }
-
-    @Override
     public boolean passDiagnostic() {
         if (!isDiagnostic()) {
             try {
@@ -108,5 +98,22 @@ public class Car extends Transport implements Competitor {
             }
         } else System.out.println("Автомобиль " + getBrand() + " " + getModel() + " прошел диагностику");
     return true;
+    }
+
+    @Override
+    public void repairTransport() {
+        System.out.println("Производится ремонт автомобиля " + getBrand() + " " + getModel()  + " следующим механиком " + getMechanics());
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + getBrand() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", engineVolume=" + getEngineVolume() +
+                ", pitStop=" + getPitStop() +
+                ", maxSpeed=" + getMaxSpeed() +
+                ", bestTime=" + getBestTime() +
+                '}';
     }
 }

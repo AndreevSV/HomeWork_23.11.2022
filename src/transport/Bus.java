@@ -106,6 +106,11 @@ public class Bus extends Transport implements Competitor {
     }
 
     @Override
+    public void repairTransport() {
+        System.out.println("Производится ремонт автобуса " + getBrand() + " " + getModel() + " следующим механиком " + getMechanics());
+    }
+
+    @Override
     public String toString() {
         return "Bus{" +
                 "brand='" + getBrand() + '\'' +

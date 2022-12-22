@@ -1,12 +1,7 @@
 package transport;
 
-import java.util.SortedMap;
-
-import static transport.Transport.searchForBestTime;
-
 public class Main {
     public static void main(String[] args)  {
-
 
         Car car1 = new Car("Lada", "Granta", 1.7, Car.CabinType.SEDAN, 20, 250, 40, true);
         Car car2 = new Car ("Audi", "A8 50 L TDI quattro", 3.0, Car.CabinType.SEDAN,20, 200, 50, true);
@@ -15,7 +10,7 @@ public class Main {
 
         Bus bus1 = new Bus ("Mercedes", "Citaro", 11.98, Bus.BusCapacity.LITTLE ,23, 200, 45, false);
         Bus bus2 = new Bus ("Mercedes", "Conecto", 11.97, Bus.BusCapacity.LARGE, 25, 220, 50, false);
-        Bus bus3 = new Bus ("Mercedes", "Travego", 11.97, Bus.BusCapacity.LARGE,23, 230, 48, true);
+        Bus bus3 = new Bus ("Mercedes", "Travego", 11.97, Bus.BusCapacity.SUPER_LITTLE,23, 230, 48, true);
         Bus bus4 = new Bus ("Mercedes", "Tourismo", 10.68, Bus.BusCapacity.SUPER_LARGE,26, 235, 50, true);
 
         Truck truck1 = new Truck("Mercedes", "Actros", 15.6, Truck.LoadCapacity.N1,21, 250, 30, false);
@@ -23,11 +18,42 @@ public class Main {
         Truck truck3 = new Truck("Mercedes", "Actros", 15.6, Truck.LoadCapacity.N3,26, 222, 45, true);
         Truck truck4 = new Truck("Mercedes", "Atego", 5.1, Truck.LoadCapacity.N1,20, 220, 50, false);
 
+        Sponsor<Transport> sponsor1 =  new Sponsor<>("Сбербанк", 1_000_000);
+        Sponsor<Transport> sponsor2 =  new Sponsor<>("ВТБ", 500_000);
+        Sponsor<Transport> sponsor3 =  new Sponsor<>("Уралсиб", 2_500_000);
+        Sponsor<Transport> sponsor4 =  new Sponsor<>("Открытие", 500_000_000);
 
-        Transport[] transports = new Transport[] {car1, car2, car3, car4, bus1, bus2, bus3, bus4, truck1, truck2, truck3, truck4};
-        Car[] cars = new Car[] {car1, car2, car3, car4};
-        Bus[] buses = new Bus[] {bus1, bus2, bus3, bus4};
-        Truck[] trucks = new Truck[] {truck1, truck2, truck3, truck4};
+        Mechanic<Car> mechanic1 = new Mechanic<>("Сергей", "Козлов", "Синтез");
+        Mechanic<Transport> mechanic2 = new Mechanic<>("Артем", "Пивоваров", "БестПартс");
+        Mechanic<Bus> mechanic3 = new Mechanic<>("Владимир", "Картополов", "Сервис плюс");
+        Mechanic<Truck> mechanic4 = new Mechanic<>("Александр", "Васнецов", "Астон-Мартин");
+
+        DriverB driverB = new DriverB("Artem", 'B', 10, car1);
+        DriverB driverB1 = new DriverB("Tomik", 'B', 8, car2);
+        DriverB driverB2 = new DriverB("Kostya", 'B', 7, car3);
+        DriverB driverB3 = new DriverB("Samson", 'B', 4, car4);
+
+        DriverC driverC = new DriverC("Maxim", 'C', 15, truck1);
+        DriverC driverC1 = new DriverC("Vlad", 'C', 1, truck2);
+        DriverC driverC2 = new DriverC("Viktor", 'C', 4, truck3);
+        DriverC driverC3 = new DriverC("Anton", 'C', 2, truck4);
+
+        DriverD driverD = new DriverD("Aslan", 'D', 3, bus1);
+        DriverD driverD1 = new DriverD("Vladimit", 'D', 4, bus2);
+        DriverD driverD2 = new DriverD("Andrey", 'D', 30, bus3);
+        DriverD driverD3 = new DriverD("Turan", 'D', 34, bus4);
+
+        car1.addDriver(driverB);
+        car1.addMechanic(mechanic3);
+        car1.addSponsor(sponsor1);
+        printDriverSponsorsMechanics(car1);
+        mechanic1.makeService(car1);
+        mechanic1.passDiagnsostic(car1);
+
+//        Transport[] transports = new Transport[] {car1, car2, car3, car4, bus1, bus2, bus3, bus4, truck1, truck2, truck3, truck4};
+//        Car[] cars = new Car[] {car1, car2, car3, car4};
+//        Bus[] buses = new Bus[] {bus1, bus2, bus3, bus4};
+//        Truck[] trucks = new Truck[] {truck1, truck2, truck3, truck4};
 
 //        printTransport(cars);
 //        System.out.println();
@@ -48,27 +74,22 @@ public class Main {
 //        System.out.println(searchForBestTime(cars));
 //        System.out.println(searchForBestTime(buses));
 //        System.out.println(searchForBestTime(trucks));
-//
-//
-        DriverB<Car> driverA = new DriverB<>("Artem", ' ', 10);
-        DriverC<Truck> driverB = new DriverC<>("Maxim", ' ', 15);
-        DriverD<Bus> driverC = new DriverD<>("Aslan", 'C', 3);
 
-        Driver[] drivers = {driverA, driverB, driverC};
+//        car1.printDriverSponsorsMechanics();
 
+//        Driver[] drivers = {driverA, driverB, driverC};
+//
 //        System.out.println();
-//        System.out.println(driverA.showText(car1));
+//        System.out.println(driverA.showText(car2));
 //        System.out.println(driverB.showText(truck3));
 //        System.out.println(driverC.showText(bus2));
 
-//    car1.printType();
-//    bus2.printType();
-//    truck4.printType();
+//        car1.printType();
+//        bus2.printType();
+//        truck4.printType();
 
 //        testDiagnostic(transports);
-        testLicence(drivers);
-
-
+//        testLicence(drivers);
     }
 
     public static void printTransport(Transport[] transport) {
@@ -97,4 +118,11 @@ public class Main {
 
         }
     }
+
+    public static void printDriverSponsorsMechanics (Transport transport) {
+        System.out.println("Транспортное средств " +  transport.getBrand()  + " " + transport.getModel() +
+                " управлется водителем " + transport.getDrivers() + " обслуживается следующими механиками " +
+                transport.getMechanics() + " и имеет следующих спонсоров " + transport.getSponsors());
+    }
+
 }

@@ -1,24 +1,10 @@
 package transport;
 
-public class DriverB<T extends Car> extends Driver {
+public class DriverB extends Driver<Car> {
 
-    public DriverB(String name, char licence, int experience) {
-        super(name, licence, experience);
+    public DriverB(String name, char licence, int experience, Car transport) {
+        super(name, licence, experience, transport);
     }
 
-    @Override
-    public void startMoving() {
-        System.out.println("Водитель " + getName() + " начал движение");
-    }
-
-    @Override
-    public void stopMoving() {
-        System.out.println("Водитель" + getName() + "остановился");
-    }
-
-    @Override
-    public void refillTransport() {
-        System.out.println("Водитель" + getName() + "заправил автомобиль");
-    }
 
 }

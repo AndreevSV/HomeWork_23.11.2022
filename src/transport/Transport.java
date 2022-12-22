@@ -1,22 +1,54 @@
 package transport;
 
-public abstract class Transport implements Competitor {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
     public int pitStop;
     public int maxSpeed;
     public int bestTime;
-    public Transport[] transports;
-
+//    public Transport[] transports;
     public boolean diagnostic;
+    public List<Sponsor<?>> sponsors = new ArrayList<>();
+    public List<Mechanic<?>> mechanics = new ArrayList<>();
+    public List<Driver<?>> drivers = new ArrayList<>(1);
 
     public Transport(String brand, String model, double engineVolume, boolean diagnostic) {
         setBrand(brand);
         setModel(model);
         setEngineVolume(engineVolume);
         setDiagnostic(diagnostic);
+
+
     }
+
+    public List<Sponsor<?>> getSponsors() {
+        return sponsors;
+    }
+
+    public void addSponsor(Sponsor<?> sponsor) {
+        this.sponsors.add(sponsor);
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic<?> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public void addDriver(Driver<?> driver) {
+        this.drivers.add(driver);
+    }
+
 
     public boolean isDiagnostic() {
         return diagnostic;
@@ -38,9 +70,9 @@ public abstract class Transport implements Competitor {
         return bestTime;
     }
 
-    public Transport[] getTransports() {
-        return transports;
-    }
+//    public Transport[] getTransports() {
+//        return transports;
+//    }
 
     public String getBrand() {
         return brand;
@@ -95,12 +127,13 @@ public abstract class Transport implements Competitor {
                 a = i;
             }
         }
-        return "Лучшее время " + transports[a].getBestTime() + " минут у автомобиля " + transports[a].getBrand() + " " + transports[a].getModel() + " с двигателем " + transports[a].getEngineVolume() + "л";
+        return "Лучшее время " + transports[a].getBestTime() +
+                " минут у автомобиля " + transports[a].getBrand() + " " +
+                transports[a].getModel() + " с двигателем " + transports[a].getEngineVolume() + "л";
     }
-
     public abstract void printType();
-
     public abstract boolean passDiagnostic();
+    public abstract void repairTransport();
 
 }
 
