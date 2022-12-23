@@ -1,5 +1,8 @@
 package transport;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Main {
     public static void main(String[] args)  {
 
@@ -43,19 +46,31 @@ public class Main {
         DriverD driverD2 = new DriverD("Andrey", 'D', 30, bus3);
         DriverD driverD3 = new DriverD("Turan", 'D', 34, bus4);
 
-        car1.addDriver(driverB);
-        car1.addMechanic(mechanic1);
-        car1.addSponsor(sponsor1);
-        printDriverSponsorsMechanics(car1);
-        mechanic1.makeService(car1);
-        mechanic1.passDiagnsostic(car1);
+//        car1.addDriver(driverB);
+//        car1.addMechanic(mechanic1);
+//        car1.addSponsor(sponsor1);
+//        printDriverSponsorsMechanics(car1);
+//        mechanic1.makeService(car1);
+//        mechanic1.passDiagnsostic(car1);
+//
+//        bus3.addDriver(driverD1);
+//        bus3.addMechanic(mechanic3);
+//        bus3.addSponsor(sponsor4);
+//        printDriverSponsorsMechanics(bus3);
+//        mechanic3.makeService(bus3);
+//        mechanic3.passDiagnsostic(bus3);
 
-        bus3.addDriver(driverD1);
-        bus3.addMechanic(mechanic3);
-        bus3.addSponsor(sponsor4);
-        printDriverSponsorsMechanics(bus3);
-        mechanic3.makeService(bus3);
-        mechanic3.passDiagnsostic(bus3);
+
+        ServiceStation<Car> serviceStation1 = new ServiceStation<>("Сервисная станция 1");
+        serviceStation1.addTransport(car1);
+        serviceStation1.addTransport(car2);
+        serviceStation1.addTransport(car3);
+        serviceStation1.addTransport(car4);
+
+        serviceStation1.doDiagnsotic();
+        serviceStation1.doDiagnsotic();
+        serviceStation1.doDiagnsotic();
+        serviceStation1.doDiagnsotic();
 
 //        Transport[] transports = new Transport[] {car1, car2, car3, car4, bus1, bus2, bus3, bus4, truck1, truck2, truck3, truck4};
 //        Car[] cars = new Car[] {car1, car2, car3, car4};

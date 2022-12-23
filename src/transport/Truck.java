@@ -3,7 +3,7 @@ package transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Truck extends Transport implements Competitor {
+public class Truck extends Transport implements Competitor, Maintainable {
 
     public enum LoadCapacity{N1(3.5F), N2(12.0F), N3(12.001F);
 

@@ -3,7 +3,7 @@ package transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Car extends Transport implements Competitor {
+public class Car extends Transport implements Competitor, Maintainable {
 
     public enum CabinType {SEDAN("Седан"), HATCHBACK("Хэтчбэк"), COUPE("Купе"), WAGON("Универсал"), SUV("Внедорожник"), CROSSOVER("Кросовер"), PICKUP("Пикап"), VAN("Фургон"),
         MINIVAN("Минивен");

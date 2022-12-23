@@ -3,7 +3,7 @@ package transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bus extends Transport implements Competitor {
+public class Bus extends Transport implements Competitor, Maintainable {
 
     public enum BusCapacity {SUPER_LITTLE(10), LITTLE(25), MEDIUM(50), LARGE(80), SUPER_LARGE(120);
 
