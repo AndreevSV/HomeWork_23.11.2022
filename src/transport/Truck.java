@@ -1,11 +1,11 @@
 package transport;
 
-public class Truck extends Transport implements Competitor {
+import java.util.ArrayList;
+import java.util.List;
 
-    public enum LoadCapacity{
-        N1(3.5F),
-        N2(12.0F),
-        N3(12.001F);
+public class Truck extends Transport implements Competitor, Maintainable {
+
+    public enum LoadCapacity{N1(3.5F), N2(12.0F), N3(12.001F);
 
         final float loadCapacity;
         LoadCapacity(float loadCapacity) {
@@ -34,12 +34,40 @@ public class Truck extends Transport implements Competitor {
     public int bestTime;
     public LoadCapacity loadCapacity;
 
+    public List<Sponsor<Transport>> sponsors = new ArrayList<>();
+    public List<Mechanic<Truck>> mechanics = new ArrayList<>();
+    public List<DriverC> drivers = new ArrayList<>();
+
     public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
         super(brand, model, engineVolume, diagnostic);
         this.loadCapacity = loadCapacity;
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
         this.bestTime = bestTime;
+    }
+
+    public List<Sponsor<Transport>> getSponsors() {
+        return sponsors;
+    }
+
+    public void addSponsor(Sponsor<Transport> sponsor) {
+        this.sponsors.add(sponsor);
+    }
+
+    public List<Mechanic<Truck>> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic<Truck> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+
+    public List<DriverC> getDrivers() {
+        return drivers;
+    }
+
+    public void addDriver(DriverC driver) {
+        this.drivers.add(driver);
     }
 
     public LoadCapacity getLoadCapacity() {
@@ -87,17 +115,7 @@ public class Truck extends Transport implements Competitor {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Truck{" +
-                "brand='" + getBrand() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", engineVolume=" + getEngineVolume() +
-                ", pitStop=" + getPitStop() +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", bestTime=" + getBestTime() +
-                '}';
-    }
+
 
     @Override
     public boolean passDiagnostic() {
@@ -109,5 +127,22 @@ public class Truck extends Transport implements Competitor {
             }
         } else System.out.println("Грузовик " + getBrand() + " " + getModel() + " прошел диагностику");
         return true;
+    }
+
+    @Override
+    public void repairTransport() {
+        System.out.println("Производится ремонт грузовика " + getBrand() + " " + getModel()  + " следующим механиком " + getMechanics());
+    }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "brand='" + getBrand() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", engineVolume=" + getEngineVolume() +
+                ", pitStop=" + getPitStop() +
+                ", maxSpeed=" + getMaxSpeed() +
+                ", bestTime=" + getBestTime() +
+                '}';
     }
 }

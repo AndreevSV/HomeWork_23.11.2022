@@ -1,17 +1,10 @@
 package transport;
 
 public abstract class Driver <T extends Transport> {
-    public String name;
-    public char licence;
-    public int experience;
-
-    public T transport;
-
-    public Driver(String name, char licence, int experience) {
-        setName(name);
-        setLicence(licence);
-        setExperience(experience);
-    }
+    private String name;
+    private char licence;
+    private int experience;
+    private T transport;
 
     public Driver(String name, char licence, int experience, T transport) {
         setName(name);
@@ -19,13 +12,7 @@ public abstract class Driver <T extends Transport> {
         setExperience(experience);
         this.transport = transport;
     }
-    public T getTransport() {
-        return transport;
-    }
 
-    public void setTransport(T transport) {
-        this.transport = transport;
-    }
     public String getName() {
         return name;
     }
@@ -50,15 +37,35 @@ public abstract class Driver <T extends Transport> {
         this.experience = experience;
     }
 
-    public abstract void startMoving();
+    public T getTransport() {
+        return transport;
+    }
 
-    public abstract void stopMoving();
+    public void setTransport(T transport) {
+        this.transport = transport;
+    }
 
-    public abstract void refillTransport();
+    public void startMoving() {
+        System.out.println("Водитель " + getName() + " начал движение");
+    }
 
-    public String showText(Transport transport) {
+    public void stopMoving() {
+        System.out.println("Водитель" + getName() + "остановился");
+    }
+
+    public void refillTransport() {
+        System.out.println("Водитель" + getName() + "заправил автомобиль");
+    }
+
+    public String showText(T transport) {
         return "Водитель " + getName() + " управляет транспортным средством " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде";
     }
 
-
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", licence=" + licence +
+                '}';
+    }
 }

@@ -1,16 +1,11 @@
 package transport;
 
-public class Car extends Transport implements Competitor {
+import java.util.ArrayList;
+import java.util.List;
 
-    public enum CabinType {
-        SEDAN("Седан"),
-        HATCHBACK("Хэтчбэк"),
-        COUPE("Купе"),
-        WAGON("Универсал"),
-        SUV("Внедорожник"),
-        CROSSOVER("Кросовер"),
-        PICKUP("Пикап"),
-        VAN("Фургон"),
+public class Car extends Transport implements Competitor, Maintainable {
+
+    public enum CabinType {SEDAN("Седан"), HATCHBACK("Хэтчбэк"), COUPE("Купе"), WAGON("Универсал"), SUV("Внедорожник"), CROSSOVER("Кросовер"), PICKUP("Пикап"), VAN("Фургон"),
         MINIVAN("Минивен");
 
         final String cabinType;
@@ -34,12 +29,40 @@ public class Car extends Transport implements Competitor {
     public int bestTime;
     public CabinType cabinType;
 
+    public List<Sponsor<Transport>> sponsors = new ArrayList<>();
+    public List<Mechanic<Car>> mechanics = new ArrayList<>();
+    public List<DriverB> drivers = new ArrayList<>();
+
     public Car(String brand, String model, double engineVolume, CabinType cabinType, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
         super(brand, model, engineVolume, diagnostic);
         this.cabinType = cabinType;
         this.pitStop = pitStop;
         this.maxSpeed = maxSpeed;
         this.bestTime = bestTime;
+    }
+
+    public List<Sponsor<Transport>> getSponsors() {
+        return sponsors;
+    }
+
+    public void addSponsor(Sponsor<Transport> sponsor) {
+        this.sponsors.add(sponsor);
+    }
+
+    public List<Mechanic<Car>> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic<Car> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+
+    public List<DriverB> getDrivers() {
+        return drivers;
+    }
+
+    public void addDriver(DriverB driver) {
+        this.drivers.add(driver);
     }
 
     public CabinType getCabinType() {
@@ -87,18 +110,6 @@ public class Car extends Transport implements Competitor {
     }
 
     @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + getBrand() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", engineVolume=" + getEngineVolume() +
-                ", pitStop=" + getPitStop() +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", bestTime=" + getBestTime() +
-                '}';
-    }
-
-    @Override
     public boolean passDiagnostic() {
         if (!isDiagnostic()) {
             try {
@@ -108,5 +119,22 @@ public class Car extends Transport implements Competitor {
             }
         } else System.out.println("Автомобиль " + getBrand() + " " + getModel() + " прошел диагностику");
     return true;
+    }
+
+    @Override
+    public void repairTransport() {
+        System.out.println("Производится ремонт автомобиля " + getBrand() + " " + getModel()  + " следующим механиком " + getMechanics());
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + getBrand() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", engineVolume=" + getEngineVolume() +
+                ", pitStop=" + getPitStop() +
+                ", maxSpeed=" + getMaxSpeed() +
+                ", bestTime=" + getBestTime() +
+                '}';
     }
 }
