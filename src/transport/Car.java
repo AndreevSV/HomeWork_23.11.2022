@@ -1,7 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Car extends Transport implements Competitor, Maintainable {
 
@@ -30,7 +29,7 @@ public class Car extends Transport implements Competitor, Maintainable {
     public CabinType cabinType;
 
     public List<Sponsor<Transport>> sponsors = new ArrayList<>();
-    public List<Mechanic<Car>> mechanics = new ArrayList<>();
+    public Set<Mechanic<Car>> mechanics = new HashSet<>();
     public List<DriverB> drivers = new ArrayList<>();
 
     public Car(String brand, String model, double engineVolume, CabinType cabinType, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
@@ -49,7 +48,7 @@ public class Car extends Transport implements Competitor, Maintainable {
         this.sponsors.add(sponsor);
     }
 
-    public List<Mechanic<Car>> getMechanics() {
+    public Set<Mechanic<Car>> getMechanics() {
         return mechanics;
     }
 
@@ -124,6 +123,20 @@ public class Car extends Transport implements Competitor, Maintainable {
     @Override
     public void repairTransport() {
         System.out.println("Производится ремонт автомобиля " + getBrand() + " " + getModel()  + " следующим механиком " + getMechanics());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        if (!super.equals(o)) return false;
+        Car car = (Car) o;
+        return getCabinType() == car.getCabinType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCabinType());
     }
 
     @Override

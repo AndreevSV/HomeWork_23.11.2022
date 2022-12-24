@@ -1,7 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Truck extends Transport implements Competitor, Maintainable {
 
@@ -31,11 +30,26 @@ public class Truck extends Transport implements Competitor, Maintainable {
 
     public int pitStop;
     public int maxSpeed;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Truck)) return false;
+        if (!super.equals(o)) return false;
+        Truck truck = (Truck) o;
+        return getLoadCapacity() == truck.getLoadCapacity();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getLoadCapacity());
+    }
+
     public int bestTime;
     public LoadCapacity loadCapacity;
 
     public List<Sponsor<Transport>> sponsors = new ArrayList<>();
-    public List<Mechanic<Truck>> mechanics = new ArrayList<>();
+    public Set<Mechanic<Truck>> mechanics = new HashSet<>();
     public List<DriverC> drivers = new ArrayList<>();
 
     public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
@@ -54,7 +68,7 @@ public class Truck extends Transport implements Competitor, Maintainable {
         this.sponsors.add(sponsor);
     }
 
-    public List<Mechanic<Truck>> getMechanics() {
+    public Set<Mechanic<Truck>> getMechanics() {
         return mechanics;
     }
 

@@ -2,6 +2,7 @@ package transport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Transport {
     private String brand;
@@ -105,6 +106,18 @@ public abstract class Transport {
     public abstract boolean passDiagnostic();
     public abstract void repairTransport();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transport)) return false;
+        Transport transport = (Transport) o;
+        return Double.compare(transport.getEngineVolume(), getEngineVolume()) == 0 && getBrand().equals(transport.getBrand()) && getModel().equals(transport.getModel());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBrand(), getModel(), getEngineVolume());
+    }
 }
 
 
