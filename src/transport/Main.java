@@ -49,6 +49,12 @@ public class Main {
         DriverD driverD3 = new DriverD("Turan", 'D', 34, bus4);
 
         car1.addDriver(driverB);
+        car1.addDriver(driverB);
+        car1.addDriver(driverB);
+        car1.addDriver(driverB);
+        car1.addDriver(driverB);
+        car1.addDriver(driverB);
+        car1.addDriver(driverB);
         car1.addMechanic(mechanic1);
         car1.addMechanic(mechanic1);
         car1.addSponsor(sponsor1);
