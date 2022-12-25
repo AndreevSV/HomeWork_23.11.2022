@@ -50,7 +50,7 @@ public class Truck extends Transport implements Competitor, Maintainable {
 
     public List<Sponsor<Transport>> sponsors = new ArrayList<>();
     public Set<Mechanic<Truck>> mechanics = new HashSet<>();
-    public List<DriverC> drivers = new ArrayList<>();
+    public Set<DriverC> drivers = new HashSet<>();
 
     public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity, int pitStop, int maxSpeed, int bestTime, boolean diagnostic) {
         super(brand, model, engineVolume, diagnostic);
@@ -76,7 +76,7 @@ public class Truck extends Transport implements Competitor, Maintainable {
         this.mechanics.add(mechanic);
     }
 
-    public List<DriverC> getDrivers() {
+    public Set<DriverC> getDrivers() {
         return drivers;
     }
 
