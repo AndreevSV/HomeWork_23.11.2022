@@ -45,7 +45,7 @@ public class Bus extends Transport implements Competitor, Maintainable {
 
     public List<Sponsor<Transport>> sponsors = new ArrayList<>();
     public Set<Mechanic<Bus>> mechanics = new HashSet<>();
-    public List<DriverD> drivers = new ArrayList<>();
+    public Set<DriverD> drivers = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
@@ -86,7 +86,7 @@ public class Bus extends Transport implements Competitor, Maintainable {
         this.mechanics.add(mechanic);
     }
 
-    public List<DriverD> getDrivers() {
+    public Set<DriverD> getDrivers() {
         return drivers;
     }
 
